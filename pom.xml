@@ -30,6 +30,35 @@
             <version>${logback.version}</version>
         </dependency>
 
+
+
+
+
+        <!-- Appium Java Client -->
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>7.5.1</version>
+        </dependency>
+
+        <!-- Selenium -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.141.59</version>
+        </dependency>
+
+
+
+
+
+
+
+
+
+
+
+
         <!-- Serenity Dependencies -->
         <dependency>
             <groupId>net.serenity-bdd</groupId>
@@ -43,6 +72,9 @@
             <version>${serenity.version}</version>
             <scope>test</scope>
         </dependency>
+
+
+
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-rest-assured</artifactId>
@@ -123,7 +155,15 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
                 <configuration>
-                    <skip>true</skip>
+
+
+
+
+                    <skip>false</skip>
+
+
+
+
                 </configuration>
             </plugin>
             <plugin>

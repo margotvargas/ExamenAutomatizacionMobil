@@ -1,46 +1,37 @@
 package com.nttdata.stepsdefinitions;
 
-import com.nttdata.steps.SuaceLabsLoginSteps;
-import io.cucumber.java.en.And;
+import com.nttdata.steps.SauceLabsSteps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
 import net.thucydides.core.annotations.Steps;
-
+//Aqui enlazamos las definiciones de los pasos en el archivo feature, con los metodos definidos el archivo steps
 public class SauceLabsStepDef {
+
     @Steps
-    SuaceLabsLoginSteps login;
+    SauceLabsSteps sauceLabsSteps;
 
-    @When("ingreso el usuario {string}")
-    public void ingresoElUsuario(String usuario) {
-        login.ingresoElUsuario(usuario);
+    @Given("estoy en la aplicación de SauceLabs")
+    public void estoyEnLaAplicacion() {
+        sauceLabsSteps.abrirAplicacion();
     }
 
-    @Given("ingreso al aplicativo de SauceLabs")
-    public void ingresoAlAplicativoDeSauceLabs() {
+    @And("valido que carguen correctamente los productos en la galeria")
+    public void validoQueCarguenProductosEnGaleria() {
+        sauceLabsSteps.validarProductosEnGaleria();
     }
 
-    @When("inicio sesión con mi usuario {string} y clave {string}")
-    public void inicioSesiónConMiUsuarioYClave(String arg0, String arg1) {
-        login.ingresoElUsuario(arg0);
-        login.ingresarClave(arg1);
-        login.ingresar();
-
+    @When("agrego {int} del siguiente producto {string}")
+    public void agregoProducto(int unidades, String producto) {
+        sauceLabsSteps.seleccionarProducto(producto);
+        sauceLabsSteps.agregarProductoAlCarrito(unidades);
     }
 
-
-
-    @And("ingreso la clave {string}")
-    public void ingresoLaClave(String arg0) {
-        login.ingresarClave(arg0);
+    @Then("valido que el carrito actualice correctamente con el producto {string} y la cantidad {int}")
+    public void validoQueElCarritoActualiceCorrectamente(String producto, int unidades) {
+        sauceLabsSteps.accederAlCarrito();
+        sauceLabsSteps.validarProductoEnCarrito(producto, unidades);
     }
 
-    @And("hago clic en LOGIN")
-    public void hagoClicEn() {
-        login.ingresar();
-    }
-
-    @And("valido el login OK")
-    public void validoElLoginOK() {
-        login.validacionLogin();
-    }
 }
